@@ -17,7 +17,7 @@ const secondaryPhone = '0219131568'
 
 // Only change below this line
 
-const primaryValid = isNaN(primaryPhone) === false //is primaryPhone a number
+const primaryValid = isNaN(primaryPhone) === false //isNan() function checks if primaryPhone isNan then returns true, then is true === false, the answer is false.
 const secondaryValid = isNaN(secondaryPhone) === false
 
 console.log('Primary phone is valid numerical string:', primaryValid)
