@@ -66,7 +66,7 @@ const leo = {
   address: {
     number: leoNumber,
     street: leoStreet,
-    sarahPostal: leoPostal,
+    Postal: leoPostal,
   }
 }
 
@@ -78,9 +78,10 @@ const sarah = {
   address: {
     number: sarahNumber,
     street: sarahStreet,
-    postalCode: sarahPostal,
+    postal: sarahPostal,
   }
 }
 
-console.log(leo, leo.address[leoPostal])
-console.log(sarah, sarah.address[sarahPostal])
+console.log(leo.address)
+console.log(sarah.address
+  )
