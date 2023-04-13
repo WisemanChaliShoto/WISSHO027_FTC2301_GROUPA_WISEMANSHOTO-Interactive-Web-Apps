@@ -50,11 +50,11 @@ const expenses = {
 };
   
 const tax = {
-    734: 3,
-    234: 20,
-    913: 12,   // tax is in %
-    415: 38,
-    502: 42,
+    734: '3%',
+    234: '20%',
+    913: '12%',   // tax is in %
+    415: '38%',
+    502: '42%',
 };
 
 const rent = {
@@ -69,7 +69,7 @@ const rent = {
 
 // You can change below however you want
 
-const taxAsDecimal = parseFloat(tax[913] / 100);
+const taxAsDecimal = parseInt(tax[913]) / 100;
 const startingAfterTax = salary * (1 - taxAsDecimal);
 const rentKey = `${size}-${lodging}`;
 const balance = startingAfterTax - expenses.transport - expenses.food- rent["large-apartment"]; 
