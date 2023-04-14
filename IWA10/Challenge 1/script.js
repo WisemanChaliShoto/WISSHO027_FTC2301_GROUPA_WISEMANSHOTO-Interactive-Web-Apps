@@ -163,7 +163,7 @@ if (holidays[futureId] !== undefined) {
     console.log(`The holiday assigned to key 9 is: ${holidays[futureId]}`);
 } else {
    
-    console.log`ID${futureId} not created yet`;
+    console.log(`ID ${futureId} not created yet`);
 } 
 
 // console.log(holidays.futureId.name || 'ID {futureId} not created yet')
@@ -180,14 +180,34 @@ const correctDate = copied.date
 
 correctDate.hours = 0
 correctDate.minutes = 0
-isEarlier = copied.date < holidays[6].date
+const isEarlier = copied.date < holidays[6].date
 console.log('New date is earlier:', isEarlier)
-/*
-if (isEarlier) copied.date = correctDate
-console.log('ID change:', holidays[christmas].id != copied.id || copied.id)
-console.log('Name change:', holidays[christmas].name != copied.name || copied.name)
-console.log('Date change:', holidays[christmas].date != copied.date || copied.date)
+/*if (isEarlier) { 
+    //copied.date = correctDate
+console.log('ID change:', holidays[christmas].id != copied.id || copied.id)}
 
+console.log('Name change:', holidays[christmas].name != copied.name || copied.name)
+console.log('Date change:', holidays[christmas].date != copied.date || copied.date)*/
+
+if (holidays.ID !== copied.Name) {
+    console.log("ID change:", holidays.ID);
+  } else {
+    console.log("ID change: false");
+  }
+  
+  if (holidays[christmas].Name !== copied.Name) {
+    console.log("Name change:", copied.Name);
+  } else {
+    console.log("Name change: false");
+  }
+  
+ /* if (holidays.Date !== original.Date) {
+    console.log("Date change:", holidays.Date);
+  } else {
+    console.log("Date change: false");
+  }
+
+/*
 const firstHolidayTimestamp = Math.min(
     holidays[0].date.getTime,
     holidays[1].date.getTime,
