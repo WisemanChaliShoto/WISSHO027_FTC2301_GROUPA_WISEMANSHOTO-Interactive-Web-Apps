@@ -10,9 +10,10 @@ const data = {
     
     // Only edit below
     
-    let [first] = data.lists[0][1].slice(-1)
-    let [second] = data.lists[1][1].slice(-1)
-    let [third] = data.lists[2][1].slice(-1)
+    let first = data.lists[0][1].slice(-1)
+    let second = data.lists[1][1].slice(-1)
+    let third = data.lists[2][1].slice(-1)
+    console.log(second);
     
     const result = []
     
