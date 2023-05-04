@@ -65,52 +65,69 @@ const MONTHS = [
   // Only edit below this comment
 
   const createHtml = (athlete) => {
-    const { firstName, surname, id, races } = athlete;
-    const { date, time } = races[races.length - 1];
-  
-    const fragment = document.createDocumentFragment();
-  
-    const title = document.createElement('h2');
-    title.textContent = id;
+    // Destructure the properties of the athlete object from the data response
+    const { firstName, surname, id, races } = data.response.data[athlete];
+    // Reverse the order of the races array
+    races.reverse() //changes the order of the array;
+    // Create a Date object from the date property of the first (latest) race
+    const latestDate = new Date(races[0].date); // creates a new date object called latestDates
+    // Get the time property of the first (latest) race
+    const latestTime = races[0].time;
+    // Create a document fragment to hold the HTML elements
+    const fragment = document.createDocumentFragment();// variable is initialized with a new empty DocumentFragment.
+    // Create an h2 element and set its text content to the athlete's id
+    const title = document.createElement("h2");
+    title.textContent = data.response.data[athlete].id;
+    // Append the title element to the fragment
     fragment.appendChild(title);
-  
-    const list = document.createElement('dl');
-  
-    const day = date.getDate();
-    const month = MONTHS[date.getMonth()];
-    const year = date.getFullYear();
-  
-    const [first, second, third, fourth] = time;
-    const total = first + second + third + fourth;
-  
+    // Create a dl element to hold the athlete's information
+    const list = document.createElement("dl");
+    // Get the day, month, and year of the latest race date
+    const day = latestDate.getDate();
+    const month = latestDate.toLocaleString("en-US", { month: "short" });
+    const year = latestDate.getFullYear();
+    // Destructure the latest time into its four components
+    const [first, second, third, fourth] = latestTime;
+    // Calculate the total time of the latest race in minutes
+    let total = first + second + third + fourth;
+    // Calculate the hours and minutes of the latest race
     const hours = Math.floor(total / 60);
     const minutes = total % 60;
-  
+    // Set the HTML content of the list element using template literals
     list.innerHTML = /* html */ `
       <dt>Athlete</dt>
       <dd>${firstName} ${surname}</dd>
-  
       <dt>Total Races</dt>
       <dd>${races.length}</dd>
-  
       <dt>Event Date (Latest)</dt>
       <dd>${day} ${month} ${year}</dd>
-  
       <dt>Total Time (Latest)</dt>
-      <dd>${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}</dd>
+      <dd>${hours.toString().padStart(2, 0)}:${minutes}</dd>
     `;
-  
+    // Append the list element to the fragment
     fragment.appendChild(list);
-  
+    // Return the completed HTML fragment
     return fragment;
+    
   };
 
-  //console.log(createHtml);
   
-  const NM372 = data.response.data.NM372;
-  const SV782 = data.response.data.SV782;
+  // Destructure the id properties of the two athletes from the data response
+  const { NM372: { id: NM372 }, SV782: {id: SV782} } = data.response.data;
 
-  console.log(NM372);
-  console.log(SV782);
-  
  
+  // Append the HTML fragment for each athlete to their respective HTML element
+  document.querySelector('[data-athlete="NM372"]').appendChild(createHtml(NM372));
+  document.querySelector('[data-athlete="SV782"]').appendChild(createHtml(SV782));
+
+
+
+
+
+
+
+
+
+
+
+
